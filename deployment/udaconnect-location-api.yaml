@@ -9,7 +9,6 @@ spec:
   - name: "5002"
     port: 5002
     targetPort: 5002
-    nodePort: 30001
   selector:
     service: udaconnect-location-api
   type: NodePort
@@ -41,7 +40,7 @@ spec:
               name: db-env
               key: DB_USERNAME
         - name: DB_PASSWORD
-          valueFrom:S
+          valueFrom:
             secretKeyRef:
               name: db-secret
               key: DB_PASSWORD

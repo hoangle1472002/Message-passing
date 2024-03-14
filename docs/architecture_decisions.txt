@@ -1,0 +1,13 @@
+Using REST message passing for communication between the front end and your service is a suitable strategy due to its simplicity, scalability, and widely adopted industry standard.
+REST APIs provide a stateless and standardized approach, enabling easy integration with various front-end frameworks, supporting modular development, and facilitating clear communication between different components of a distributed system
+Promotes a decoupled architecture, allowing for flexibility in scaling, maintaining, and evolving both the front end and service components independently.
+
+
+Opting for gRPC-based message passing between your mobile app and service due to its efficiency, performance benefits, and strong support for bidirectional communication.
+gRPC uses HTTP/2 for transport, providing multiplexing, header compression, and lower latency, which is particularly beneficial for mobile applications where network resources are critical
+gRPC's support for protocol buffers offers a compact and language-agnostic serialization format, fostering interoperability and easing development across different platforms.
+
+
+Select Kafka for message passing between Connection Service and Person Service is a strategic decision based on its distributed, fault-tolerant, and scalable architecture.
+Kafka provides a reliable and ordered message broker that ensures data durability and consistency, making it well-suited for inter-service communication in a microservices architecture.
+Its publish-subscribe model enables asynchronous communication, decoupling producers and consumers, and its ability to handle large volumes of data across distributed environments makes it an ideal choice for maintaining resilient and efficient communication between your services.

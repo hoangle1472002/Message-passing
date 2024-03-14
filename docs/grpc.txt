@@ -1,0 +1,21 @@
+
+To integrate gRPC into your Flask service, i followed these general steps:
+
+1. Define Protobuf Messages: Create location.proto files where i define your gRPC service and messages using Protocol Buffers syntax.
+
+2. Generate gRPC Code: Compile the location.proto files to generate gRPC client and server code in my preferred programming language (in this case, Python).
+
+3. Implement gRPC Server: Implement the server-side logic to handle gRPC requests based on the generated code.
+
+4. Implement gRPC Client: Implement the client-side logic to make gRPC requests based on the generated code.
+
+How to make a sample request : run file wsgi.py, after that run file writter.py
+
+1. I created writter.py : Client is configured to send messages to localhost:5005 where the gRPC server is running.
+
+2. At file wsgi.py will serve the gRPC server on localhost:5005 import gprc to use gRPC
+   Create a gRPC channel to communicate with the server
+   Create a stub for the LocationService
+   Call the GetLocation method
+   Print the response
+
