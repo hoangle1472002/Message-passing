@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package location_service;
+
+message LocationRequest {
+  string location_id = 1;
+}
+
+message LocationResponse {
+  string id = 1;
+  // Define other fields as needed
+}
+
+service LocationService {
+  rpc GetLocation(LocationRequest) returns (LocationResponse);
+  rpc CreateLocation(LocationRequest) returns (LocationResponse);
+}

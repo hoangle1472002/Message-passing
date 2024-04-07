@@ -1,0 +1,22 @@
+The architecture of the Udaconnect application has changed significantly, moving from a monolithic design to one that is based on microservices. 
+Three different approaches to inter-service communication were implemented as a result of this change: gRPC, RESTful API endpoints, and Apache Kafka. 
+These technologies were selected with consideration for the particular needs and benefits that each presents within the framework of the services that they support.
+
+1. The Person Service will use RESTful APIs
+
+For message passing, the Person Service has been integrated with RESTful API endpoints. 
+This choice was primarily motivated by the RESTful API's built-in compatibility with different HTTP routes, which is essential for managing personal data. 
+RESTful APIs are widely available and their simplicity makes it easier to integrate and exchange data, making the service easy to use.
+
+2. The Connection Service's use of RESTful API
+
+In a similar vein, the Connection Service uses message-passing RESTful API endpoints. 
+This decision is explained by the RESTful API's simplicity and ease of upkeep, which make it a sensible option for services that need simple data exchange protocols. 
+The Connection microservice gains from a versatile and well-understood web services protocol by utilizing RESTful APIs, which improves its efficiency and maintainability.
+
+3. gRPC and Kafka Implementation in Location Services
+
+Message passing using gRPC and Kafka has been implemented for the Location Ingestion Service and Location Service. 
+Because of its strong type enforcement, security features, and high performance—all of which are crucial for effectively managing the massive amounts of location data produced by user coordinates from mobile devices—the gRPC framework was chosen. 
+However, Apache Kafka is used because of its strong ability to process large amounts of data quickly. 
+The scalable message queue system of Kafka makes it possible to manage high-velocity data streams effectively, minimizing database load during periods of peak traffic and guaranteeing data integrity.

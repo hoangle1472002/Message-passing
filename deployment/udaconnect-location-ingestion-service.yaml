@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: udaconnect-location-ingestion-service
+  name: udaconnect-location-ingestion-service
+spec:
+  ports:
+    - name: 5005-5005
+      nodePort: 30005
+      port: 5005
+      protocol: TCP
+      targetPort: 5005
+  selector:
+    app: udaconnect-location-ingestion-service
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: udaconnect-location-ingestion-service
+  name: udaconnect-location-ingestion-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: udaconnect-location-ingestion-service
+  template:
+    metadata:
+      labels:
+        app: udaconnect-location-ingestion-service
+    spec:
+      containers:
+        - image: hoangle14702/location-ingestion-service:latest
+          name: udaconnect-location-ingestion-service
+          imagePullPolicy: Always
+          env:
+            - name: KAFKA_SERVER
+              valueFrom:
+                configMapKeyRef:
+                  name: kafka-env
+                  key: KAFKA_SERVER
+            - name: TOPIC_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: kafka-env
+                  key: TOPIC_NAME
+            - name: CLIENT_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: kafka-env
+                  key: CLIENT_USERNAME
+            - name: CLIENT_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: kafka-env
+                  key: CLIENT_PASSWORD
+      restartPolicy: Always

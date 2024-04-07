@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kafka-env
+data:
+  KAFKA_SERVER: "udaconnect-kafka.default.svc.cluster.local:9092"
+  TOPIC_NAME: "test"
+  CLIENT_USERNAME: "user1"
+  CLIENT_PASSWORD: "8CZxWW2lsk"

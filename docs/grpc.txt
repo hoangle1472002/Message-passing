@@ -1,0 +1,33 @@
+### gRPC Documentation
+
+gRPC server port : 5005
+
+Protobuf definition for location messagesb:
+
+message LocationMessage {
+    int32 person_id = 1;
+    string latitude = 2;
+    string longitude = 3;
+}
+
+This definition outlines the expected structure for incoming location data, featuring fields for `person_id`, `latitude`, and `longitude`.
+
+For make a sample request and testing, a `fake_grpc_client.py` script is provided with the microservice. 
+This script will use to send location data to the location-ingestion-service through gRPC method.
+
+## Testing Steps
+
+Step 1 : First identify the ingestion pod in the default namespace:
+``` bash
+export LOCATION_INGESTION_POD=$(kubectl get pods --namespace default -l "app=udaconnect-location-ingestion-service" -o jsonpath="{.items[0].metadata.name}")
+```
+
+Step 2 : Access the pod's shell:
+``` bash
+kubectl exec -it $LOCATION_INGESTION_POD sh
+```
+
+Step 3 : execute the provided gRPC client script to send a location message :
+``` bash
+python grpc_client.py
+```
